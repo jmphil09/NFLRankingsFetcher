@@ -1,30 +1,13 @@
 import scala.io.Source
+import java.io._
 
 object apitest {
 
   
   val site = "http://espn.go.com/nfl/powerrankings"
                                                   //> site  : String = http://espn.go.com/nfl/powerrankings
-  val teamStr = Source.fromURL(site, "UTF-8").mkString
-                                                  //> teamStr  : String = <!DOCTYPE html>
-                                                  //| <html xmlns:fb="http://www.facebook.com/2008/fbml">
-                                                  //| <head><script src="http://sports-ak.espn.go.com/sports/optimizely.js"></scri
-                                                  //| pt><meta charset="iso-8859-1">
-                                                  //| <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-                                                  //| <script type="text/javascript">    
-                                                  //|     if(true && navigator && navigator.userAgent.toLowerCase().indexOf("teams
-                                                  //| tream") >= 0) {
-                                                  //|         window.location = 'http://a.m.espn.go.com/mobilecache/general/apps/s
-                                                  //| c';
-                                                  //|     }
-                                                  //| </script>
-                                                  //| 	<script>(function(){function e(e){e=e.replace(/[\[]/,"\\[").replace(/[\]
-                                                  //| ]/,"\\]");var t=new RegExp("[\\?&]"+e+"=([^&#]*)"),n=t.exec(location.search)
-                                                  //| ;return n==null?"":decodeURIComponent(n[1].replace(/\+/g," "))}var t=navigat
-                                                  //| or.userAgent,n=window.location,r=document.cookie,i=document.referrer,s=i==="
-                                                  //| "||i.indexOf(".go.com")!==-1,o=s?"http://m.espn.go.com/nfl/rankings?src=desk
-                                                  //| top":"http://m.espn.go.com/nfl/rankings?src=desktop&rand=ref~
-                                                  //| Output exceeds cutoff limit.
+  lazy val teamStr = Source.fromURL(site, "UTF-8").mkString
+                                                  //> teamStr: => String
 
 
   def getTeams(str: String): List[String] = {
@@ -103,15 +86,61 @@ object apitest {
   }
   
   teamRankings -= " "
-  teamRankings.size
-  teamRankings                                    //> res1: scala.collection.immutable.Map[String,Int] = Map(Colts -> 7, Browns -
+  teamRankings.size                               //> res1: Int = 32
+  teamRankings                                    //> res2: scala.collection.immutable.Map[String,Int] = Map(Colts -> 7, Browns -
                                                   //| > 32, Rams -> 18, Giants -> 19, Redskins -> 28, Falcons -> 14, 49ers -> 3, 
                                                   //| Raiders -> 31, Bills -> 27, Packers -> 6, Lions -> 20, Dolphins -> 24, Pant
                                                   //| hers -> 11, Steelers -> 17, Eagles -> 9, Buccaneers -> 23, Bengals -> 10, C
                                                   //| hargers -> 16, Jaguars -> 30, Titans -> 25, Ravens -> 13, Texans -> 26, Sai
                                                   //| nts -> 5, Bears -> 12, Seahawks -> 1, Jets -> 21, Cardinals -> 8, Chiefs ->
                                                   //|  15, Broncos -> 2, Vikings -> 29, Cowboys -> 22, Patriots -> 4)
-                                                  //> res2: Int = 32
+
+  
+def fileWriter(filename: String, rankStr: String) = {
+  val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
+  writer.write(rankStr)
+  writer.close()
+}                                                 //> fileWriter: (filename: String, rankStr: String)Unit
+
+var strResult = new String                        //> strResult  : String = ""
+for(line <- teamRankings.toSeq.sortBy(_._2)){
+strResult += line.toString.drop(1).dropRight(1) + "\n"
+}
+strResult                                         //> res3: String = "Seahawks,1
+                                                  //| Broncos,2
+                                                  //| 49ers,3
+                                                  //| Patriots,4
+                                                  //| Saints,5
+                                                  //| Packers,6
+                                                  //| Colts,7
+                                                  //| Cardinals,8
+                                                  //| Eagles,9
+                                                  //| Bengals,10
+                                                  //| Panthers,11
+                                                  //| Bears,12
+                                                  //| Ravens,13
+                                                  //| Falcons,14
+                                                  //| Chiefs,15
+                                                  //| Chargers,16
+                                                  //| Steelers,17
+                                                  //| Rams,18
+                                                  //| Giants,19
+                                                  //| Lions,20
+                                                  //| Jets,21
+                                                  //| Cowboys,22
+                                                  //| Buccaneers,23
+                                                  //| Dolphins,24
+                                                  //| Titans,25
+                                                  //| Texans,26
+                                                  //| Bills,27
+                                                  //| Redskins,28
+                                                  //| Vikings,29
+                                                  //| Jaguars,30
+                                                  //| Raiders,31
+                                                  //| Browns,32
+                                                  //| "
+      
+   fileWriter("2014Preseason", strResult)
   
     
 }
