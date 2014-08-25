@@ -3,7 +3,6 @@ import java.io._
 
 object apitest {
 
-  
   val site = "http://espn.go.com/nfl/powerrankings"
                                                   //> site  : String = http://espn.go.com/nfl/powerrankings
   lazy val teamStr = Source.fromURL(site, "UTF-8").mkString
@@ -95,9 +94,10 @@ object apitest {
                                                   //| nts -> 5, Bears -> 12, Seahawks -> 1, Jets -> 21, Cardinals -> 8, Chiefs ->
                                                   //|  15, Broncos -> 2, Vikings -> 29, Cowboys -> 22, Patriots -> 4)
 
-  
+
 def fileWriter(filename: String, rankStr: String) = {
-  val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
+  //val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
+  val writer = new PrintWriter(new File("C:/Users/fligh_000/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
   writer.write(rankStr)
   writer.close()
 }                                                 //> fileWriter: (filename: String, rankStr: String)Unit
@@ -139,8 +139,60 @@ strResult                                         //> res3: String = "Seahawks,1
                                                   //| Raiders,31
                                                   //| Browns,32
                                                   //| "
-      
-   fileWriter("2014Preseason", strResult)
+
+   val dummyTeamMap = Map("Seahawks" -> 0, "Broncos" -> 0, "49ers" -> 0, "Patriots" -> 0,
+   "Saints" -> 0, "Packers" -> 0, "Colts" -> 0, "Cardinals" -> 0, "Eagles" -> 0,
+   "Bengals" -> 0, "Panthers" -> 0, "Bears" -> 0, "Ravens" -> 0, "Falcons" -> 0,
+   "Chiefs" -> 0, "Chargers" -> 0, "Steelers" -> 0, "Rams" -> 0, "Giants" -> 0,
+   "Lions" -> 0, "Jets" -> 0, "Cowboys" -> 0, "Buccaneers" -> 0, "Dolphins" -> 0,
+   "Titans" -> 0, "Texans" -> 0, "Bills" -> 0, "Redskins" -> 0, "Vikings" -> 0,
+   "Jaguars" -> 0, "Raiders" -> 0, "Browns" -> 0) //> dummyTeamMap  : scala.collection.immutable.Map[String,Int] = Map(Colts -> 0
+                                                  //| , Browns -> 0, Rams -> 0, Giants -> 0, Redskins -> 0, Falcons -> 0, 49ers -
+                                                  //| > 0, Raiders -> 0, Bills -> 0, Packers -> 0, Lions -> 0, Dolphins -> 0, Pan
+                                                  //| thers -> 0, Steelers -> 0, Eagles -> 0, Buccaneers -> 0, Bengals -> 0, Char
+                                                  //| gers -> 0, Jaguars -> 0, Titans -> 0, Ravens -> 0, Texans -> 0, Saints -> 0
+                                                  //| , Bears -> 0, Seahawks -> 0, Jets -> 0, Cardinals -> 0, Chiefs -> 0, Bronco
+                                                  //| s -> 0, Vikings -> 0, Cowboys -> 0, Patriots -> 0)
+    
+    var dummyStrResult = new String               //> dummyStrResult  : String = ""
+		for(line <- dummyTeamMap.toSeq.sortBy(_._2)){
+			dummyStrResult += line.toString.drop(1).dropRight(1) + "\n"
+		}
+		dummyStrResult                    //> res4: String = "Colts,0
+                                                  //| Browns,0
+                                                  //| Rams,0
+                                                  //| Giants,0
+                                                  //| Redskins,0
+                                                  //| Falcons,0
+                                                  //| 49ers,0
+                                                  //| Raiders,0
+                                                  //| Bills,0
+                                                  //| Packers,0
+                                                  //| Lions,0
+                                                  //| Dolphins,0
+                                                  //| Panthers,0
+                                                  //| Steelers,0
+                                                  //| Eagles,0
+                                                  //| Buccaneers,0
+                                                  //| Bengals,0
+                                                  //| Chargers,0
+                                                  //| Jaguars,0
+                                                  //| Titans,0
+                                                  //| Ravens,0
+                                                  //| Texans,0
+                                                  //| Saints,0
+                                                  //| Bears,0
+                                                  //| Seahawks,0
+                                                  //| Jets,0
+                                                  //| Cardinals,0
+                                                  //| Chiefs,0
+                                                  //| Broncos,0
+                                                  //| Vikings,0
+                                                  //| Cowboys,0
+                                                  //| Patriots,0
+                                                  //| "
+
+   fileWriter("2014Week18", dummyStrResult)
   
     
 }
