@@ -40,7 +40,7 @@ int RRedskins [19]= {0, 10, 19, 24, 27, 25, 27, 28, 23, 24, 22, 23, 0, 0, 0, 0, 
 int rankarray [32][19];
 
 //These are the home arrays for each team.
-bool HCardinals []= {HCardinals13[19]};//{false, false, true, false, false, true, false, true, true, false, true, false, true, false, true, false, false, true};
+bool HCardinals []= {false, false, true, false, false, true, false, true, true, false, true, false, true, false, true, false, false, true};
 bool HFalcons []= {false, false, true, false, true, true, false, true, false, false, true, false, true, false, false, true, false, true};
 bool HRavens []= {false, false, true, true, false, false, true, false, false, false, true, false, true, true, true, false, true, false};
 bool HBills []= {false, true, true, false, true, false, true, false, false, true, false, true, false, true, false, false, true, false};
