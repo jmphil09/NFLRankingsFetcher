@@ -1,0 +1,5 @@
+package testPackage
+
+object testObject {
+
+}

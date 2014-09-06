@@ -1,15 +1,17 @@
 import scala.io.Source
 import java.io._
 
-object apitest {
+import fileWriter.fileWriter._
 
+object apitest {
+/*
   def fileWriter(filename: String, rankStr: String) = {
     //val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
     val writer = new PrintWriter(new File("C:/Users/fligh_000/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt"))
     writer.write(rankStr)
     writer.close()
-  }                                               //> fileWriter: (filename: String, rankStr: String)Unit
-
+  }
+*/
   def createWeekRankings(year: String, week: String) = {
     val site = "http://espn.go.com/nfl/powerrankings/_/year/" + year + "/" + "week/" + week
     val teamStr = Source.fromURL(site, "UTF-8").mkString
@@ -90,7 +92,7 @@ object apitest {
 
     fileWriter(year + "Week" + week, strResult)
 
-  }                                               //> createWeekRankings: (year: String, week: String)Unit
+  }
 
   def createDummyRankings(year: String, week: String) = {
     val dummyTeamMap = Map("Seahawks" -> 0, "Broncos" -> 0, "49ers" -> 0, "Patriots" -> 0,
@@ -108,7 +110,7 @@ object apitest {
 
     fileWriter(year + "Week" + week, dummyStrResult)
 
-  }                                               //> createDummyRankings: (year: String, week: String)Unit
+  }
 
   //createDummyRankings("2014", "1")
   //createWeekRankings("2014", "1")
