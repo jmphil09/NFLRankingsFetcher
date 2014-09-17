@@ -72,4 +72,6 @@ object initializeTeams {
   
   createRankArrays("2014")
   
+  val dummy = "DONE"                              //> dummy  : String = DONE
+  
 }
