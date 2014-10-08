@@ -5,8 +5,8 @@ object initializeTeams {
 
   def createRankArrays(year: String) = {
   	def fileWriter(filename: String, rankStr: String) = {
-    val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
-    //val writer = new PrintWriter(new File("C:/Users/fligh_000/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt"))
+    //val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
+    val writer = new PrintWriter(new File("C:/Users/fligh_000/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt"))
     writer.write(rankStr)
     writer.close()
   	}
@@ -20,8 +20,8 @@ object initializeTeams {
    "Jaguars" -> "", "Raiders" -> "", "Browns" -> "")
    
    	def updateWeek(map: Map[String, String], week: String): Map[String, String] = {
-   		val filename = "C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/"+year+week+".txt"
-   		//val filename = "C:/Users/fligh_000/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/"+year+week+".txt"
+   		//val filename = "C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/"+year+week+".txt"
+   		val filename = "C:/Users/fligh_000/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/"+year+week+".txt"
    		var weekSet = Source.fromFile(filename).getLines().toSet
    		val weekPairArray = weekSet.map(x => x.split(","))
     	val weekMap = weekPairArray.map(x=> (x(0), x(1))).toMap
