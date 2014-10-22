@@ -113,7 +113,7 @@ object apitest {
   }                                               //> createDummyRankings: (year: String, week: String)Unit
 
   //createDummyRankings("2014", "1")
-  createWeekRankings("2014", "7")
+  createWeekRankings("2014", "8")
   
   val dummy = "DONE"                              //> dummy  : String = DONE
 }
