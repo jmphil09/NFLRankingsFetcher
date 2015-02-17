@@ -6,7 +6,8 @@ import java.io._
 object apitest {
 
   def fileWriter(filename: String, rankStr: String) = {
-    val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
+        val writer = new PrintWriter(new File("C:/Users/James/Documents/src/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
+    //val writer = new PrintWriter(new File("C:/Users/James/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt" ))
     //val writer = new PrintWriter(new File("C:/Users/fligh_000/Desktop/git-workspace/NFLRankingsFetcher/NFLRankingsFetcher/data/" + filename + ".txt"))
     writer.write(rankStr)
     writer.close()
@@ -113,7 +114,7 @@ object apitest {
   }                                               //> createDummyRankings: (year: String, week: String)Unit
 
   //createDummyRankings("2014", "1")
-  createWeekRankings("2014", "8")
+  createWeekRankings("2014", "18")
   
   val dummy = "DONE"                              //> dummy  : String = DONE
 }
